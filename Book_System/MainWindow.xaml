@@ -22,9 +22,24 @@
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Content="Добавить" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" FontSize="14"></Button>
-        <Button Content="Изменить" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2" FontSize="14"></Button>
-        <Button Content="Удалить" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="3" FontSize="14"></Button>
+        <Label Content="Сортировать по:" Width="180" Height="30" HorizontalAlignment="Center" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom" Grid.Column="0" Grid.Row="0" FontSize="14"/>
+        <ComboBox Name="sortList" Width="180" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" FontSize="14">
+            <TextBlock>Названию</TextBlock>
+            <TextBlock>Автору</TextBlock>
+            <TextBlock>Цене</TextBlock>
+            <TextBlock>Издательству</TextBlock>
+        </ComboBox>
+        <ListView Name="booksList" Grid.Column="1" FontSize="14">
+            <ListView.View>
+                <GridView>
+                </GridView>
+            </ListView.View>
+            <ListView.Resources>
+            </ListView.Resources>
+        </ListView>
+        <Button Content="Добавить" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="3" FontSize="14"></Button>
+        <Button Content="Изменить" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="4" FontSize="14"></Button>
+        <Button Content="Удалить" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="5" FontSize="14"></Button>
         <Button Content="Открыть" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="7" FontSize="14"></Button>
         <Button Content="Сохранить" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="8" FontSize="14"></Button>
     </Grid>
