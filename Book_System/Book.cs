@@ -6,17 +6,64 @@ using System.Threading.Tasks;
 
 namespace Book_System
 {
-    public class Book
+    public class Book : IComparable
     {
-        public String Name { get; private set; }
-        public String Author { get; private set; }
-        public decimal Value { get; private set; }
+
+        // ID книги
+        private Guid guid;
+
+        // Название книги
+        public string Name { get; private set; }
+
+        // Автор книги
+        public string Author { get; private set; }
+
+        // Год написания книги
+        public string Year { get; private set; }
+
+        // Цена за книгу
+        public decimal Price { get; private set; }
+
+        // Издательство
+        public string Publisher { get; private set; }
 
         public Book()
         {
-            this.Name = "";
-            this.Author = "";
-            this.Value = 0.00m;
+            this.guid = new Guid();
+            this.Name = "UNNAMED";
+            this.Author = "NONAME";
+            this.Year = "-";
+            this.Price = 0.00m;
+            this.Publisher = "";
         }
+
+        public Book(string name, string author)
+        {
+            this.guid = new Guid();
+            this.Name = name;
+            this.Author = author;
+            this.Year = "-";
+            this.Price = 0.00m;
+            this.Publisher = "";
+        }
+
+        public string toString()
+        {
+            string delimiter = "; ";
+            string value = ": ";
+            string name = "Название книги";
+            string author = "Автор книги";
+            string year = "Год написания";
+            string price = "Цена";
+            string publisher = "Издательство";
+            string result = name + value + this.Name + delimiter +
+                            author + value + this.Author + delimiter +
+                            year + value + this.Year + delimiter +
+                            price + value + this.Price + delimiter +
+                            publisher + value + this.Publisher + delimiter;
+            return result;
+        }
+
+        public 
     }
 }
