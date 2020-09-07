@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Book_System"
         mc:Ignorable="d"
-        Title="Библиотека книг" Height="500" Width="850">
+        Title="Библиотека книг" Height="550" Width="950" ResizeMode="CanMinimize">
     <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
@@ -21,26 +21,36 @@
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
         <Label Content="Сортировать по:" Width="180" Height="30" HorizontalAlignment="Center" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom" Grid.Column="0" Grid.Row="0" FontSize="14"/>
         <ComboBox Name="sortList" Width="180" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" FontSize="14">
             <TextBlock>Названию</TextBlock>
             <TextBlock>Автору</TextBlock>
             <TextBlock>Цене</TextBlock>
+            <TextBlock>Году</TextBlock>
             <TextBlock>Издательству</TextBlock>
         </ComboBox>
-        <ListView Name="booksList" Grid.Column="1" FontSize="14">
+        <Label Content="Название библиотеки:" Width="180" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom" Grid.Column="1" Grid.Row="0" FontSize="14"/>
+        <ListView Name="lvBooksList" Grid.Column="1" Grid.Row="1" FontSize="14">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="Название" Width="150" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Автор" Width="150" DisplayMemberBinding="{Binding Age}" />
+                    <GridViewColumn Header="Год написания" Width="150" DisplayMemberBinding="{Binding Mail}" />
+                    <GridViewColumn Header="Цена" Width="150" DisplayMemberBinding="{Binding Mail}" />
+                    <GridViewColumn Header="Издательство" Width="150" DisplayMemberBinding="{Binding Mail}" />
                 </GridView>
             </ListView.View>
             <ListView.Resources>
             </ListView.Resources>
         </ListView>
+        <CheckBox Name="cbInvert" IsChecked="False" Content="По убыванию" Width="180" Height="20" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" FontSize="14"/>
         <Button Name="bbAdd" Click="bbAdd_Click" Content="Добавить" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="3" FontSize="14"></Button>
         <Button Name="bbEdit" Click="bbEdit_Click" Content="Изменить" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="4" FontSize="14"></Button>
         <Button Name="bbDelete" Click="bbDelete_Click" Content="Удалить" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="5" FontSize="14"></Button>
-        <Button Name="bbOpenFile" Click="bbOpenFile_Click" Content="Открыть" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="7" FontSize="14"></Button>
-        <Button Name="bbSaveFile" Click="bbSaveFile_Click" Content="Сохранить" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="8" FontSize="14"></Button>
+        <Button Name="bbNewFile" Click="bbNewFile_Click" Content="Создать" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="7" FontSize="14"></Button>
+        <Button Name="bbOpenFile" Click="bbOpenFile_Click" Content="Открыть" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="8" FontSize="14"></Button>
+        <Button Name="bbSaveFile" Click="bbSaveFile_Click" Content="Сохранить" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="9" FontSize="14"></Button>
     </Grid>
 </Window>

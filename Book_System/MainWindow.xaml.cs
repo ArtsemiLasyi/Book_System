@@ -24,10 +24,12 @@ namespace Book_System
     {
         private static String extension = ".library";
         private static String filter = "Library file (*" + extension +")|*" + extension;
+        public Library activeLibrary;
+
 
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
         /// <summary>
@@ -56,6 +58,16 @@ namespace Book_System
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void bbDelete_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hi from Button_Click");
+        }
+
+        /// <summary>
+        /// Нажатие на кнопку "Создать"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bbNewFile_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Hi from Button_Click");
         }

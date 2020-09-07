@@ -12,6 +12,9 @@ namespace Book_System
         // ID книги
         private Guid guid;
 
+        // ISBN книги
+        public string ISBN { get; private set; }
+
         // Название книги
         public string Name { get; private set; }
 
@@ -47,7 +50,17 @@ namespace Book_System
             this.Publisher = "";
         }
 
-        public string toString()
+        public Book(string name, string author, string year, decimal price, string publisher)
+        {
+            this.guid = new Guid();
+            this.Name = name;
+            this.Author = author;
+            this.Year = year;
+            this.Price = price;
+            this.Publisher = publisher;
+        }
+
+        public override string ToString()
         {
             string delimiter = "; ";
             string value = ": ";
@@ -64,6 +77,22 @@ namespace Book_System
             return result;
         }
 
-        public 
+        public int CompareTo(object obj)
+        {
+            if (obj == null) 
+                return 1;
+
+            Book tempBook = obj as Book;
+            if (tempBook != null)
+            {
+                bool condition = this.Name.ToLower().Equals(tempBook.Name.ToLower());
+                if (condition)
+                    return 0;
+                else
+                    return 1;
+            }
+            else
+                throw new ArgumentException("Object isn't a Book!");
+        }
     }
 }
