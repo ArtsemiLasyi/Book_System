@@ -1,0 +1,40 @@
+﻿<Window x:Class="Book_System.EditBookWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Book_System"
+        mc:Ignorable="d"
+        Title="Редактирование книги" Height="450" Width="450" ResizeMode="CanMinimize" ContentRendered="Window_ContentRendered">
+    <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Name="lbBookISBN" Width="400" Height="30" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Grid.Column="1" Grid.Row="0" FontSize="14">ISBN:</Label>
+        <TextBox Name="tbBookISBN" Width="400" Height="20" VerticalAlignment="Bottom"  Grid.Column="1" Grid.Row="0" FontSize="14"></TextBox>
+        <Label Name="lbBookName" Width="400" Height="30" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Grid.Column="1" Grid.Row="1" FontSize="14">Название книги:</Label>
+        <TextBox Name="tbBookName" Width="400" Height="20" VerticalAlignment="Bottom"  Grid.Column="1" Grid.Row="1" FontSize="14"></TextBox>
+        <Label Name="lbBookAuthor" Width="400" Height="30" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Grid.Column="1" Grid.Row="2" FontSize="14">Автор книги:</Label>
+        <TextBox Name="tbBookAuthor" Width="400" Height="20" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="2" FontSize="14"></TextBox>
+        <Label Name="lbBookYear" Width="400" Height="30" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Grid.Column="1" Grid.Row="3" FontSize="14">Год написания книги:</Label>
+        <TextBox Name="tbBookYear" Width="400" Height="20" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="3" FontSize="14"></TextBox>
+        <Label Name="lbBookPrice" Width="400" Height="30" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Grid.Column="1" Grid.Row="4" FontSize="14">Цена книги:</Label>
+        <TextBox Name="tbBookPrice" Width="400" Height="20" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="4" FontSize="14"></TextBox>
+        <Label Name="lbBookPublisher" Width="400" Height="30" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Grid.Column="1" Grid.Row="5" FontSize="14">Издательство:</Label>
+        <TextBox Name="tbBookPublisher" Width="400" Height="20" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="5" FontSize="14"></TextBox>
+        <Button Name="bbOk" Click="bbOk_Click" Content="Ок" Width="180" Height="50" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="8" FontSize="14"></Button>
+        <Button Name="bbCancel" Click="bbCancel_Click" Content="Отмена" Width="180" Height="50" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="8" FontSize="14"></Button>
+    </Grid>
+</Window>

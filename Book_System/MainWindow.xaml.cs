@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.IO;
 using Microsoft.Win32;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Linq;
 
 namespace Book_System
 {
@@ -23,13 +25,22 @@ namespace Book_System
     public partial class MainWindow : Window
     {
         private static String extension = ".library";
-        private static String filter = "Library file (*" + extension +")|*" + extension;
-        public Library activeLibrary;
-
+        private static String filter = "Library file (*" + extension + ")|*" + extension;
+        public static Library activeLibrary = new Library();
+        public static Book activeBook;
+        private static List<string> sortList = new List<string>() {
+            "ISBN",
+            "Название",
+            "Автор",
+            "Год написания",
+            "Цена",
+            "Издательство"};
 
         public MainWindow()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            lvBooksList.ItemsSource = activeLibrary.Content;
+            cbSortList.ItemsSource = sortList;
         }
 
         /// <summary>
@@ -39,7 +50,8 @@ namespace Book_System
         /// <param name="e"></param>
         private void bbAdd_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Hi from Button_Click");
+            activeBook = new Book();
+            new EditBookWindow().ShowDialog();
         }
 
         /// <summary>
@@ -49,7 +61,8 @@ namespace Book_System
         /// <param name="e"></param>
         private void bbEdit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Hi from Button_Click");
+            activeBook = (Book)lvBooksList.SelectedItem;
+            new EditBookWindow().ShowDialog();
         }
 
         /// <summary>
@@ -59,7 +72,8 @@ namespace Book_System
         /// <param name="e"></param>
         private void bbDelete_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Hi from Button_Click");
+            Book temp = (Book)lvBooksList.SelectedItem;
+            activeLibrary.Content.Remove(temp);
         }
 
         /// <summary>
@@ -69,7 +83,7 @@ namespace Book_System
         /// <param name="e"></param>
         private void bbNewFile_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Hi from Button_Click");
+            activeLibrary.Content.Clear();
         }
 
         /// <summary>
@@ -84,6 +98,21 @@ namespace Book_System
             if ((bool)openFileDialog.ShowDialog())
             {
                 // Успешное открытие файла
+                BinaryFormatter formatter = new BinaryFormatter();
+                using (FileStream fs = new FileStream(openFileDialog.FileName, FileMode.Open))
+                {
+                    try
+                    {
+                        activeLibrary.Content.Clear();
+                        Library tempLibrary = (Library)formatter.Deserialize(fs);
+                        foreach (Book temp in tempLibrary.Content)
+                            activeLibrary.Content.Add(temp);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
             }
         }
 
@@ -99,7 +128,24 @@ namespace Book_System
             if ((bool)saveFileDialog.ShowDialog())
             {
                 // Успешное сохранение файла
+                BinaryFormatter formatter = new BinaryFormatter();
+                using (FileStream fs = new FileStream(saveFileDialog.FileName, FileMode.OpenOrCreate))
+                {
+                    try
+                    {
+                        formatter.Serialize(fs, activeLibrary);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
             }
+        }
+
+        private void cbSortList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MessageBox.Show(cbSortList.SelectedItem.ToString());
         }
     }
 }

@@ -3,37 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace Book_System
 {
+    [Serializable]
     public class Library
     {
-        // ID библиотеки
-        private Guid guid;
 
         // Содержимое библиотеки
-        public List<Book> Content;
+        public ObservableCollection<Book> Content;
 
         // Название библиотеки
         public string Name { get; private set; }
 
         public Library()
         {
-            this.guid = new Guid();
-            this.Content = new List<Book>();
+            this.Content = new ObservableCollection<Book>();
+            this.Name = "";
         }
 
-        public Library(List<Book> content, string name)
+        public Library(ObservableCollection<Book> content, string name)
         {
-            this.guid = new Guid();
             this.Content = content;
             this.Name = name;
         }
 
         public Library(string name)
         {
-            this.guid = new Guid();
-            this.Content = new List<Book>();
+            this.Content = new ObservableCollection<Book>();
             this.Name = name;
         }
     }
