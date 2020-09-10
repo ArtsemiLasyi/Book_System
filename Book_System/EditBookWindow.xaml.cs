@@ -53,7 +53,7 @@ namespace Book_System
                     decimal price;
                     try
                     {
-                        price = decimal.Parse(tbBookYear.Text.Trim());
+                        price = decimal.Parse(tbBookPrice.Text.Trim());
                         year = int.Parse(tbBookYear.Text.Trim());
                     }
                     catch

@@ -115,7 +115,7 @@ namespace Book_System
                 }       
             }
             else
-                throw new ArgumentException("Object isn't a Book!");
+                throw new ArgumentException("Это не книга!");
         }
 
         /// <summary>
@@ -154,6 +154,11 @@ namespace Book_System
             }
             else
                 return false;
+        }
+
+        public static int BookComparison(Book book1, Book book2)
+        {
+            return book1.CompareTo(book2);
         }
     }
 }

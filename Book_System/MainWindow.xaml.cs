@@ -8,6 +8,7 @@ using System.IO;
 using Microsoft.Win32;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Controls;
+using System.Collections.ObjectModel;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -15,7 +16,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Linq;
 
 namespace Book_System
 {
@@ -24,8 +24,8 @@ namespace Book_System
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static String extension = ".library";
-        private static String filter = "Library file (*" + extension + ")|*" + extension;
+        private static string extension = ".library";
+        private static string filter = "Library file (*" + extension + ")|*" + extension;
         public static Library activeLibrary = new Library();
         public static Book activeBook;
         private static List<string> sortList = new List<string>() {
@@ -145,7 +145,12 @@ namespace Book_System
 
         private void cbSortList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MessageBox.Show(cbSortList.SelectedItem.ToString());
+            if ((bool)cbInvert.IsChecked)
+            {
+                lvBooksList.ItemsSource = activeLibrary.Content.OrderByDescending(x => x.ISBN);
+            }
+            else
+                lvBooksList.ItemsSource = activeLibrary.Content.OrderBy(x => x.ISBN);
         }
     }
 }
