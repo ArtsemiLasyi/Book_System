@@ -24,23 +24,26 @@ namespace Book_System
     /// </summary>
     public partial class MainWindow : Window
     {
+        delegate IEnumerable<Book> SortCollection(ObservableCollection<Book> content, bool bydescending);
         private static string extension = ".library";
         private static string filter = "Library file (*" + extension + ")|*" + extension;
         public static Library activeLibrary = new Library();
         public static Book activeBook;
-        private static List<string> sortList = new List<string>() {
-            "ISBN",
-            "Название",
-            "Автор",
-            "Год написания",
-            "Цена",
-            "Издательство"};
+        private static Dictionary<string, SortCollection> sortList = new Dictionary<string, SortCollection>
+        {
+            ["ISBN"] = Library.SortByISBN,
+            ["Название"] = Library.SortByName,
+            ["Автор"] = Library.SortByAuthor,
+            ["Год написания"] = Library.SortByYear,
+            ["Цена"] = Library.SortByPrice,
+            ["Издательство"] = Library.SortByPublisher
+        };
 
         public MainWindow()
         {
             InitializeComponent();
             lvBooksList.ItemsSource = activeLibrary.Content;
-            cbSortList.ItemsSource = sortList;
+            cbSortList.ItemsSource = sortList.Keys;
         }
 
         /// <summary>
@@ -84,6 +87,7 @@ namespace Book_System
         private void bbNewFile_Click(object sender, RoutedEventArgs e)
         {
             activeLibrary.Content.Clear();
+            lvBooksList.ItemsSource = activeLibrary.Content;
         }
 
         /// <summary>
@@ -145,12 +149,25 @@ namespace Book_System
 
         private void cbSortList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((bool)cbInvert.IsChecked)
+            Sort(activeLibrary);
+        }
+
+        private void cbInvert_Checked(object sender, RoutedEventArgs e)
+        {
+            Sort(activeLibrary);
+        }
+
+        private void Sort(Library library)
+        {
+            if (cbSortList.SelectedItem == null)
+                return;
+            foreach (var elem in sortList)
             {
-                lvBooksList.ItemsSource = activeLibrary.Content.OrderByDescending(x => x.ISBN);
+                if (elem.Key.Equals(cbSortList.SelectedItem.ToString()))
+                {
+                    lvBooksList.ItemsSource = elem.Value(library.Content, (bool)cbInvert.IsChecked);
+                }
             }
-            else
-                lvBooksList.ItemsSource = activeLibrary.Content.OrderBy(x => x.ISBN);
         }
     }
 }

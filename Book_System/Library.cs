@@ -34,5 +34,90 @@ namespace Book_System
             this.Content = new ObservableCollection<Book>();
             this.Name = name;
         }
+
+        /// <summary>
+        /// Сортировка по ISBN
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="bydescending"></param>
+        /// <returns></returns>
+        public static IEnumerable<Book> SortByISBN(ObservableCollection<Book> content, bool orderbydescending)
+        {
+            if (orderbydescending)
+                return content.OrderByDescending(x => x.ISBN);
+            else
+                return content.OrderBy(x => x.ISBN);
+        }
+
+        /// <summary>
+        /// Сортировка по названию
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="bydescending"></param>
+        /// <returns></returns>
+        public static IEnumerable<Book> SortByName(ObservableCollection<Book> content, bool orderbydescending)
+        {
+            if (orderbydescending)
+                return content.OrderByDescending(x => x.Name);
+            else
+                return content.OrderBy(x => x.Name);
+        }
+
+        /// <summary>
+        /// Сортировка по автору
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="bydescending"></param>
+        /// <returns></returns>
+        public static IEnumerable<Book> SortByAuthor(ObservableCollection<Book> content, bool orderbydescending)
+        {
+            if (orderbydescending)
+                return content.OrderByDescending(x => x.Author);
+            else
+                return content.OrderBy(x => x.Author);
+        }
+
+        /// <summary>
+        /// Сортировка по цене
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="bydescending"></param>
+        /// <returns></returns>
+        public static IEnumerable<Book> SortByPrice(ObservableCollection<Book> content, bool orderbydescending)
+        {
+            if (orderbydescending)
+                return content.OrderByDescending(x => x.Price);
+            else
+                return content.OrderBy(x => x.Price);
+        }
+
+        /// <summary>
+        /// Сортировка по году
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="bydescending"></param>
+        /// <returns></returns>
+        public static IEnumerable<Book> SortByYear(ObservableCollection<Book> content, bool orderbydescending)
+        {
+            if (orderbydescending)
+                return content.OrderByDescending(x => x.Year);
+            else
+                return content.OrderBy(x => x.Year);
+        }
+
+        /// <summary>
+        /// Сортировка по издательству
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="bydescending"></param>
+        /// <returns></returns>
+        public static IEnumerable<Book> SortByPublisher(ObservableCollection<Book> content, bool orderbydescending)
+        {
+            if (orderbydescending)
+                return content.OrderByDescending(x => x.Publisher);
+            else
+                return content.OrderBy(x => x.Publisher);
+        }
+
     }
 }

@@ -45,7 +45,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <CheckBox x:Name="cbInvert" IsChecked="False" Content="По убыванию" Width="180" Height="20" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" FontSize="14"/>
+        <CheckBox x:Name="cbInvert" Checked="cbInvert_Checked" Unchecked="cbInvert_Checked" IsChecked="False" Content="По убыванию" Width="180" Height="20" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" FontSize="14"/>
         <Button x:Name="bbAdd" Click="bbAdd_Click" Content="Добавить" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="3" FontSize="14"></Button>
         <Button x:Name="bbNewFile" Click="bbNewFile_Click" Content="Создать" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="7" FontSize="14"></Button>
         <Button x:Name="bbOpenFile" Click="bbOpenFile_Click" Content="Открыть" Width="180" Height="50" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="8" FontSize="14"></Button>
