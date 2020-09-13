@@ -116,7 +116,11 @@ namespace Book_System
             int[] numbers;    //массив цифр
             int sum = 0;      // контрольная сумма   
             
-            numbers = isbn.ToCharArray().Select(i => i == 'X' ? 10 : int.Parse(i.ToString())).ToArray();
+            try
+            {
+                numbers = isbn.ToCharArray().Select(i => i == 'X' ? 10 : int.Parse(i.ToString())).ToArray();
+            }
+            catch { return false; }
             
             if (numbers.Length == 10)
             {
@@ -129,7 +133,17 @@ namespace Book_System
             }
             else if (numbers.Length == 13)
             {
-                return true;
+                int index1 = 0;  // четные позиции
+                int index2 = 0;  // нечетные позиции
+                for (int i = 0; i < numbers.Length-1; i++)
+                    if (i % 2 == 1)
+                        index1 += numbers[i];
+                    else
+                        index2 += numbers[i];
+                if (numbers[12] == ((index1 * 3) + index2) % 10)
+                    return true;
+                else
+                    return false;
             }
             else
                 return false;

@@ -102,8 +102,8 @@ namespace Book_System
             Book tempBook = obj as Book;
             if (tempBook != null)
             {
-                int ind1 = GetHashCode();
-                int ind2 = tempBook.GetHashCode();
+                int ind1 = int.Parse(this.ISBN);
+                int ind2 = int.Parse(tempBook.ISBN);
                 if (ind1 == ind2)
                     return 0;
                 else
@@ -126,8 +126,11 @@ namespace Book_System
         {
             int isbn = this.ISBN.GetHashCode();
             int name = this.Name.GetHashCode();
+            int author = this.Author.GetHashCode();
+            int year = this.Year.GetHashCode();
+            int publisher = this.Publisher.GetHashCode();
             int price = this.Price.GetHashCode();
-            long hash = (isbn + name + price) % (int.MaxValue);
+            long hash = (isbn + name + author + price + year + publisher) % (int.MaxValue);
             int result = (int)hash;
             return result;
         }
