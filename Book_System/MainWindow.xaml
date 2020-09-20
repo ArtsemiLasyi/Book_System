@@ -27,6 +27,7 @@
         <ComboBox x:Name="cbSortList" SelectionChanged="cbSortList_SelectionChanged" Width="180" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" FontSize="14" IsReadOnly="True">
         </ComboBox>
         <Label x:Name="lbLibraryName" Content="Название библиотеки:" Width="180" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom" Grid.Column="1" Grid.Row="0" FontSize="14"/>
+        <TextBox Name="tbLibraryName" Width="306" Height="20" HorizontalAlignment="Center"  VerticalAlignment="Bottom"  Grid.Column="1" Grid.Row="0" FontSize="14" Margin="158,0,529.6,0.4"></TextBox>
         <ListView Name="lvBooksList" Grid.Row="1" Grid.Column="1" Grid.RowSpan="9">
             <ListView.ContextMenu>
                 <ContextMenu>

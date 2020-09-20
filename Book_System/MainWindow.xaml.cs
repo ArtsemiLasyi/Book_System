@@ -111,6 +111,7 @@ namespace Book_System
                         Library tempLibrary = (Library)formatter.Deserialize(fs);
                         foreach (Book temp in tempLibrary.Content)
                             activeLibrary.Content.Add(temp);
+                        tbLibraryName.Text = tempLibrary.Name;
                     }
                     catch (Exception ex)
                     {
@@ -137,6 +138,7 @@ namespace Book_System
                 {
                     try
                     {
+                        activeLibrary.Name = tbLibraryName.Text;
                         formatter.Serialize(fs, activeLibrary);
                     }
                     catch (Exception ex)

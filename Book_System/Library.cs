@@ -15,7 +15,7 @@ namespace Book_System
         public ObservableCollection<Book> Content;
 
         // Название библиотеки
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         public Library()
         {

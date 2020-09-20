@@ -113,7 +113,7 @@ namespace Book_System
         /// <returns></returns>
         private bool IsCorrectISBN(string isbn)
         {
-            int[] numbers;    //массив цифр
+            int[] numbers;    // массив цифр
             int sum = 0;      // контрольная сумма   
             
             try
