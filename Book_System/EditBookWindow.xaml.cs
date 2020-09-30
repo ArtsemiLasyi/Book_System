@@ -49,11 +49,18 @@ namespace Book_System
                 {
                     string name = tbBookName.Text.Trim();
                     string author = tbBookAuthor.Text.Trim();
+
+                    // Проверка на корректность года и цены
                     int year;
                     decimal price;
                     try
                     {
                         price = decimal.Parse(tbBookPrice.Text.Trim());
+                        if (price < 0)
+                        {
+                            MessageBox.Show("Цена не может быть отрицательной!");
+                            return;
+                        }
                         year = int.Parse(tbBookYear.Text.Trim());
                     }
                     catch
@@ -105,7 +112,7 @@ namespace Book_System
             tbBookPublisher.Text = "";
         }
 
-
+        /// 
         /// <summary>
         /// Проверка ISBN на корректность
         /// </summary>

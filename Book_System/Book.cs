@@ -42,6 +42,7 @@ namespace Book_System
         {
             if ((this.ISBN.Equals("")) || (this.Name.Equals("")))
                 return true;
+            
             else
                 return false;
         }
@@ -159,6 +160,12 @@ namespace Book_System
                 return false;
         }
 
+        /// <summary>
+        /// Сравнение двух книжек
+        /// </summary>
+        /// <param name="book1"></param>
+        /// <param name="book2"></param>
+        /// <returns></returns>
         public static int BookComparison(Book book1, Book book2)
         {
             return book1.CompareTo(book2);
